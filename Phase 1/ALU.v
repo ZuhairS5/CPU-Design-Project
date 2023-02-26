@@ -52,8 +52,8 @@ module ALU(A, B, opcode, result);
 	
 		case (opcode)
 		
-			4'b0000 : result = and_result;    // AND result
-			4'b0001 : result = or_result;		 // OR result 
+			4'b0000 : result = and_result;   // AND result
+			4'b0001 : result = or_result;	 // OR result 
 			4'b0010 : result = not_result;	 // NOT result 
 			4'b0011 : result = neg_result;	 // NEG  result
 			// 4'b0100 : result = add_result;	 // ADD  result
