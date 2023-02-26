@@ -6,13 +6,11 @@
 
 module bus (BusMuxOut, BusMuxInR0, BusMuxInR1, BusMuxInR2, BusMuxInR3, BusMuxInR4, BusMuxInR5, BusMuxInR6, BusMuxInR7,								// 32:1 mulitplexer ports
 				BusMuxInR8, BusMuxInR9, BusMuxInR10, BusMuxInR11, BusMuxInR12, BusMuxInR13, BusMuxInR14, BusMuxInR15,
-				BusMuxInHI, BusMuxInLO, BuxMuxInZHI, BusMuxInZLO, BusMuxInPC, BusMuxInMDR, BusMuxInPort, BusMuxInC,
-				
-				R0Out, R1Out, R2Out, R3Out, R4Out, R5Out, R6Out, R7Out, R8Out, R9Out, R10Out, R11Out, R12Out, R13Out, R14Out, R15Out, 				// 32:5 encoder ports
-				HIOut, LOOut, ZHIOut, ZLOOut, PCOut, MDROut, InPortOut, COut, select_out);
+				BusMuxInHI, BusMuxInLO, BuxMuxInZHI, BusMuxInZLO, BusMuxInPC, BusMuxInMDR, BusMuxInPort, BusMuxInC, BusMuxInR24, 
+				BusMuxInR25, BusMuxInR26, BusMuxInR27, BusMuxInR28, BusMuxInR29, BusMuxInR30, BusMuxInR31, select_out_signal);
 
 
-      		output reg [31:0] BusMuxOut;		// 32:1 mulitplexer wires
+      		output reg [31:0] BusMuxOut;		// Multitplexer inputs
 				input wire [31:0] BusMuxInR0; 
 				input wire [31:0] BusMuxInR1;
 				input wire [31:0] BusMuxInR2; 
@@ -37,93 +35,26 @@ module bus (BusMuxOut, BusMuxInR0, BusMuxInR1, BusMuxInR2, BusMuxInR3, BusMuxInR
 				input wire [31:0] BusMuxInMDR; 
 				input wire [31:0] BusMuxInPort; 
 				input wire [31:0] BusMuxInC;
-					
+				input wire [31:0] BusMuxInR24;
+				input wire [31:0] BusMuxInR25;
+				input wire [31:0] BusMuxInR26;
+				input wire [31:0] BusMuxInR27;
+				input wire [31:0] BusMuxInR28;
+				input wire [31:0] BusMuxInR29;
+				input wire [31:0] BusMuxInR30;
+				input wire [31:0] BusMuxInR31;
+					     
 				
-				input wire R0Out; 					// 32:5 encoder wires (from control unit)
-				input wire R1Out;
-				input wire R2Out; 
-				input wire R3Out;
-				input wire R4Out; 
-				input wire R5Out; 
-				input wire R6Out; 
-				input wire R7Out; 
-				input wire R8Out; 
-				input wire R9Out; 
-				input wire R10Out; 
-				input wire R11Out; 
-				input wire R12Out; 
-				input wire R13Out; 
-				input wire R14Out; 
-				input wire R15Out; 			
-				input wire HIOut; 
-				input wire LOOut; 
-				input wire ZHIOut; 
-				input wire ZLOOut; 
-				input wire PCOut; 
-				input wire MDROut; 
-				input wire InPortOut; 
-				input wire COut;       
+				output reg [4:0] select_out_signal;					// Bus Output 
 				
-				output reg [4:0] select_out;					// Selection Pattern
-				
-				always @ (*) begin 
-				
-					if			(COut) select_out <= 5'b10111;			// encoder logic 
-					else if	(InPortOut) select_out <= 5'b10110;
-					else if	(MDROut) select_out <= 5'b10101;
-					else if	(PCOut) select_out <= 5'b10100;
-					else if	(ZLOOut) select_out <= 5'b10011;
-					else if	(ZHIOut) select_out <= 5'b10010;
-					else if	(LOOut) select_out <= 5'b10001;
-					else if	(HIOut) select_out <= 5'b10000;
-					else if	(R15Out) select_out <= 5'b01111;
-					else if	(R14Out) select_out <= 5'b01111;
-					else if	(R13Out) select_out <= 5'b01101;
-					else if	(R12Out) select_out <= 5'b01100;
-					else if	(R11Out) select_out <= 5'b01011;
-					else if	(R10Out) select_out <= 5'b01010;
-					else if	(R9Out) select_out <= 5'b01001;
-					else if	(R8Out) select_out <= 5'b01000;
-					else if	(R7Out) select_out <= 5'b00111;
-					else if	(R6Out) select_out <= 5'b00110;
-					else if	(R5Out) select_out <= 5'b00101;
-					else if	(R4Out) select_out <= 5'b00100;
-					else if	(R3Out) select_out <= 5'b00011;
-					else if	(R2Out) select_out <= 5'b00010;
-					else if	(R1Out) select_out <= 5'b00001;
-					else if	(R0Out) select_out <= 5'b00000;
-					else select_out <= 5'b00000;
-					
-					case (select_out)
-					
-						5'b00000: BusMuxOut <= BusMuxInR0;	// multiplexer logic 
-						5'b00001: BusMuxOut <= BusMuxInR1;
-						5'b00010: BusMuxOut <= BusMuxInR2;
-						5'b00011: BusMuxOut <= BusMuxInR3;
-						5'b00100: BusMuxOut <= BusMuxInR4;
-						5'b00101: BusMuxOut <= BusMuxInR5;
-						5'b00110: BusMuxOut <= BusMuxInR6;
-						5'b00111: BusMuxOut <= BusMuxInR7;
-						5'b01000: BusMuxOut <= BusMuxInR8;
-						5'b01001: BusMuxOut <= BusMuxInR9;
-						5'b01010: BusMuxOut <= BusMuxInR10;
-						5'b01011: BusMuxOut <= BusMuxInR11;
-						5'b01100: BusMuxOut <= BusMuxInR12;
-						5'b01101: BusMuxOut <= BusMuxInR13;
-						5'b01110: BusMuxOut <= BusMuxInR14;
-						5'b01111: BusMuxOut <= BusMuxInR15;
-						5'b10000: BusMuxOut <= BusMuxInHI; 		// R16
-						5'b10001: BusMuxOut <= BusMuxInLO; 		// R17
-						5'b10010: BusMuxOut <= BuxMuxInZHI; 	// R18
-						5'b10011: BusMuxOut <= BusMuxInZLO; 	// R19
-						5'b10100: BusMuxOut <= BusMuxInPC; 		// R20
-						5'b10101: BusMuxOut <= BusMuxInMDR; 	// R21
-						5'b10110: BusMuxOut <= BusMuxInPort; 	// R22
-						5'b10111: BusMuxOut <= BusMuxInC;		// R23
-						default:  BusMuxOut <= 5'b00000;
-					
-					endcase
-				
-				end
+				encoder_32_5 encode (BusR0Out, BusR1Out, BusR2Out, BusR3Out, BusR4Out, BusR5Out, BusR6Out, BusR7Out, 
+											BusR8Out, BusR9Out, BusR10Out, BusR11Out, BusR12Out, BusR13Out, BusR14Out, BusR15Out,											// encoding 
+										   BusHIOut, BusLOOut, BusZHIOut, BusZLOOut, BusPCOut, BusMDROut, BusInPortOut, BusCOut, 
+											BusR24Out, BusR25Out, BusR26Out, BusR27Out, BusR28Out, BusR29Out, BusR30Out, BusR31Out, BusEncoderSelect);
+											
+				mux_31_1 muxing (BusMuxOut, BusMuxInR0, BusMuxInR1, BusMuxInR2, BusMuxInR3, BusMuxInR4, BusMuxInR5, BusMuxInR6, BusMuxInR7,				   // multiplexing 
+									  BusMuxInR8, BusMuxInR9, BusMuxInR10, BusMuxInR11, BusMuxInR12, BusMuxInR13, BusMuxInR14, BusMuxInR15,
+							        BusMuxInHI, BusMuxInLO, BuxMuxInZHI, BusMuxInZLO, BusMuxInPC, BusMuxInMDR, BusMuxInPort, BusMuxInC, BusMuxIn24, 
+							        BusMuxIn25, BusMuxIn26, BusMuxIn27, BusMuxIn28, BusMuxIn29, BusMuxIn30, BusMuxIn31, select_out_signal);
 				
 endmodule	
