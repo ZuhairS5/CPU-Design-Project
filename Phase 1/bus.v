@@ -7,7 +7,7 @@
 module bus (BusMuxOut, BusMuxInR0, BusMuxInR1, BusMuxInR2, BusMuxInR3, BusMuxInR4, BusMuxInR5, BusMuxInR6, BusMuxInR7,								// 32:1 mulitplexer ports
 				BusMuxInR8, BusMuxInR9, BusMuxInR10, BusMuxInR11, BusMuxInR12, BusMuxInR13, BusMuxInR14, BusMuxInR15,
 				BusMuxInHI, BusMuxInLO, BuxMuxInZHI, BusMuxInZLO, BusMuxInPC, BusMuxInMDR, BusMuxInPort, BusMuxInC, BusMuxInR24, 
-				BusMuxInR25, BusMuxInR26, BusMuxInR27, BusMuxInR28, BusMuxInR29, BusMuxInR30, BusMuxInR31, select_out_signal);
+				BusMuxInR25, BusMuxInR26, BusMuxInR27, BusMuxInR28, BusMuxInR29, BusMuxInR30, BusMuxInR31, BusSelect);
 
 
       	output reg [31:0] BusMuxOut;		// Multitplexer inputs
@@ -45,16 +45,16 @@ module bus (BusMuxOut, BusMuxInR0, BusMuxInR1, BusMuxInR2, BusMuxInR3, BusMuxInR
 	input wire [31:0] BusMuxInR31;
 
 
-	output reg [4:0] select_out_signal;	  // Bus Output 
+	output reg [4:0] BusSelect;	  // Bus Output 
 
 	encoder_32_5 encode (BusR0Out, BusR1Out, BusR2Out, BusR3Out, BusR4Out, BusR5Out, BusR6Out, BusR7Out, 					// encoding 
 			     BusR8Out, BusR9Out, BusR10Out, BusR11Out, BusR12Out, BusR13Out, BusR14Out, BusR15Out,											 
 			     BusHIOut, BusLOOut, BusZHIOut, BusZLOOut, BusPCOut, BusMDROut, BusInPortOut, BusCOut, 
-		             BusR24Out, BusR25Out, BusR26Out, BusR27Out, BusR28Out, BusR29Out, BusR30Out, BusR31Out, BusEncoderSelect);
+		             BusR24Out, BusR25Out, BusR26Out, BusR27Out, BusR28Out, BusR29Out, BusR30Out, BusR31Out, BusSelect);
 
 	mux_32_1 muxing (BusMuxOut, BusMuxInR0, BusMuxInR1, BusMuxInR2, BusMuxInR3, BusMuxInR4, BusMuxInR5, BusMuxInR6, BusMuxInR7,		// multiplexing (associate each encoding with MUX input to get BUS output)
 			 BusMuxInR8, BusMuxInR9, BusMuxInR10, BusMuxInR11, BusMuxInR12, BusMuxInR13, BusMuxInR14, BusMuxInR15,
 		         BusMuxInHI, BusMuxInLO, BuxMuxInZHI, BusMuxInZLO, BusMuxInPC, BusMuxInMDR, BusMuxInPort, BusMuxInC, BusMuxIn24, 
-			 BusMuxIn25, BusMuxIn26, BusMuxIn27, BusMuxIn28, BusMuxIn29, BusMuxIn30, BusMuxIn31, select_out_signal);
+			 BusMuxIn25, BusMuxIn26, BusMuxIn27, BusMuxIn28, BusMuxIn29, BusMuxIn30, BusMuxIn31, BusSelect);
 				
 endmodule	
