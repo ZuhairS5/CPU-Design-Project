@@ -45,7 +45,7 @@ module bus (BusMuxOut, BusMuxInR0, BusMuxInR1, BusMuxInR2, BusMuxInR3, BusMuxInR
 	input wire [31:0] BusMuxInR31;
 
 
-	output reg [4:0] select_out_signal;	 // Bus Output 
+	output reg [4:0] select_out_signal;	  // Bus Output 
 
 	encoder_32_5 encode (BusR0Out, BusR1Out, BusR2Out, BusR3Out, BusR4Out, BusR5Out, BusR6Out, BusR7Out, 					// encoding 
 			     BusR8Out, BusR9Out, BusR10Out, BusR11Out, BusR12Out, BusR13Out, BusR14Out, BusR15Out,											 
