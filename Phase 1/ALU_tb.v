@@ -16,18 +16,22 @@ module ALU_tb;
 	
 	initial 
 		begin 
-			input_a <= 16;
+			input_a <= 15;
 			input_b <= 3;
 			
-			opcode <= 5'b0000;      // check AND operation 
+			opcode <= 4'b0000;      // check AND operation 
 			
-			# 200 
+			# 100 
 			
-			opcode <= 5'b0001;		// check OR operation 
+			opcode <= 4'b0001;		// check OR operation 
 			
-			# 200 
+			# 100 
 			
-			opcode <= 5'b0010;		// check NOT operation 
+			opcode <= 4'b0010;		// check NOT operation 
+			
+			# 100
+			
+			opcode <= 4'b0011;		// check NEG (2's complement) operation 
 			
 		end 
 		
