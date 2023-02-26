@@ -1,5 +1,5 @@
 // Zuhair Shaikh and Brant Lan Li
-// NOT Operation (AND)
+// NOT Operation (NOT)
 // ELEC374 - Digital Systems Engineering
 // Department of Electrical and Computer Engineering
 // Queen's University
