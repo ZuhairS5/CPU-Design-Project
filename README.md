@@ -1,4 +1,4 @@
-  Hardware Engineering Project (Simple RISC Computer) - CPU Design
+  Hardware Engineering Project (Simple RISC Computer)
   
   Created by Zuhair Shaikh and Brant Lan Li 
   
