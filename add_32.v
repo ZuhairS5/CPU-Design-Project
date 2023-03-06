@@ -4,7 +4,9 @@
 // Department of Electrical and Computer Engineering
 // Queen's University
 
-module adder_4(
+`timescale 1ns/1ps
+
+module add_4(
 	input wire [3:0] rA, rB,
 	input wire cIn,
 	output wire [3:0] S,
@@ -15,8 +17,8 @@ module adder_4(
 	wire [3:0] P; 
 	wire [3:0] C;
 	
-	assign G = rA ^ rB;
-	assign P = rA & rB;
+	assign G = rA & rB;
+	assign P = rA ^ rB;
 	assign C[0] = cIn;
 	assign C[1]= G[0] | (P[0]&C[0]);
 	assign C[2]= G[1] | (P[1]&G[0]) | P[1]&P[0]&C[0];
@@ -25,7 +27,7 @@ module adder_4(
 	assign S[3:0] = P ^ C;
 endmodule
 
-module adder_16(
+module add_16(
 	input wire [15:0] rA, rB,
 	input wire cIn,
 	output wire [15:0] S,
@@ -36,13 +38,13 @@ module adder_16(
 	wire cOutB;
 	wire cOutC;
 
-	adder_4 adderA(.rA(rA[3:0]), .rB(rB[3:0]), .cIn(cIn), .S(S[3:0]), .cOut(cOutA));
-	adder_4 adderB(.rA(rA[7:4]), .rB(rB[7:4]), .cIn(cOutA), .S(S[7:4]), .cOut(cOutB));				
-	adder_4 adderC(.rA(rA[11:8]), .rB(rB[11:8]), .cIn(cOutB), .S(S[11:8]), .cOut(cOutC));
-	adder_4 adderD(.rA(rA[15:12]), .rB(rB[15:12]), .cIn(cOutC), .S(S[15:12]), .cOut(cOut));
+	add_4 adderA(rA[3:0], rB[3:0], cIn, S[3:0], cOutA);
+	add_4 adderB(rA[7:4], rB[7:4], cOutA, S[7:4], cOutB);				
+	add_4 adderC(rA[11:8], rB[11:8], cOutB, S[11:8], cOutC);
+	add_4 adderD(rA[15:12], rB[15:12], cOutC, S[15:12], cOut);
 endmodule
 
-module adder_32(
+module add_32(
 	input wire [31:0] rA, rB,
 	input wire cIn,
 	output wire [31:0] S,
@@ -51,6 +53,6 @@ module adder_32(
 	
 	wire cOutTemp;
 
-	adder_16 adderA(.rA(rA[15:0]), .rB(rB[15:0]), .cIn(cIn), .S(S[15:0]), .cOut(cOutTemp));
-	adder_16 adderB(.rA(rA[31:16]), .rB(rB[31:16]), .cIn(cOutTemp), .S(S[31:16]), .cOut(cOut));
+	add_16 adderA(rA[15:0], rB[15:0], cIn, S[15:0], cOutTemp);
+	add_16 adderB(rA[31:16], rB[31:16], cOutTemp, S[31:16], cOut);
 endmodule
