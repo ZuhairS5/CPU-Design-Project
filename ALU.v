@@ -15,7 +15,7 @@ module ALU(
 	
 	parameter AND = 5'b00000;	// parameters for operations
 	parameter OR =  5'b00001;
-   parameter NOT = 5'b00010;
+   	parameter NOT = 5'b00010;
 	parameter NEG = 5'b00011;
 	parameter ADD = 5'b00100;
 	parameter SUB = 5'b00101;
