@@ -5,7 +5,6 @@
 // Queen's University 
 
 module mux_mdr(
-
 	input wire [31:0] BusMuxOut,
 	input wire [31:0] Mdatain,
 	input wire read,
