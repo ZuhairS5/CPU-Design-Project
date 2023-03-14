@@ -18,4 +18,5 @@ module mdr_register (
 	
 	mdr_mux muxmdr (BusMuxOut, MDAtain, Read, D);
 	gen_register mdr (D, clk, clr, MDRin, Q);
+	
 endmodule 
