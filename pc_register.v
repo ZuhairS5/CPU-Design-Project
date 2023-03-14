@@ -14,6 +14,7 @@ module pc_register (
 	);
 	
 	initial Q = 32'b0;
+	
 	always @ (clk) 
 		begin
 			if (clr) begin
