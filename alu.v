@@ -3,7 +3,6 @@
 // ELEC374 - Digital Systems Engineering
 // Department of Electrical and Computer Engineering
 // Queen's University
-
 `timescale 1ns/10ps 
 
 module ALU(
