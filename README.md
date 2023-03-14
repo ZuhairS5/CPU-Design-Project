@@ -1,4 +1,4 @@
-  Hardware Engineering Project (Simple RISC Computer)
+  Computer Hardware Engineering Project (Simple RISC Computer)
   
   Created by Zuhair Shaikh and Brant Lan Li 
   
