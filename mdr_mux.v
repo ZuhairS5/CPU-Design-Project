@@ -14,7 +14,7 @@ module mdr_mux (
 	always @ (*)
 		begin
 			if (Read == 0)
-				Q <= BusMuxOut;
+			        Q <= BusMuxOut;
 			else if (Read == 1)
 				Q <= MDAtain;
 		end
