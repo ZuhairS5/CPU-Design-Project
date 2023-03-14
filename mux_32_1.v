@@ -66,8 +66,7 @@ module mux_32_1 (
 				
 			endcase
 			
-		end 
-				
+		end 			
 endmodule 
 
 						
