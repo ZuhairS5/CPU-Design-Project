@@ -92,7 +92,7 @@ module datapath (
 	gen_register R15 (Mux_Out, clk, clr, R15in, BusMux_R15);
 	
 	// Registers
-	gen_register InPort (Mux_Out, clk, clr, enable_OutPort, BusMux_InPort);		// InPort
+	gen_register InPort (Mux_Out, clk, clr, enable_OutPort, BusMux_InPort);	 // InPort
 	gen_register C (Mux_Out, clk, clr, enable_C, BusMux_C);			// C
 	gen_register Y (Mux_Out, clk, clr, enable_Y, BusMux_Y);    	  // Y
 	gen_register HI (Mux_Out, clk, clr, enable_HI, BusMux_HI); 	  // HIs
