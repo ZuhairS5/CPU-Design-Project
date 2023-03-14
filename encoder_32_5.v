@@ -61,7 +61,7 @@ module encoder_32_5 (
 					else if	(R0Out) Encoder_Select <= 5'b00000;
 					else Encoder_Select <= 5'b00000;
 					
-				end
+			        end
 endmodule
 
 
