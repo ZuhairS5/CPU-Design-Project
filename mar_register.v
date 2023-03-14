@@ -11,7 +11,7 @@ module mar_register (
 	
 	always @ (*) begin // port logic
 	
-		Q = MAR_in[8:0]; // spliced address
+	       Q = MAR_in[8:0]; // spliced address
 		
 	end 
 
