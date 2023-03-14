@@ -14,12 +14,12 @@ module gen_register (
 	
 	initial Q = 32'b0;
 	always @ (posedge clk)
-		begin
-			if (clr) begin
-				Q = 32'b0;
-			end
-			else if (enable) begin
-				Q <= D;
-			end
+	begin
+		if (clr) begin
+			Q = 32'b0;
 		end
+		else if (enable) begin
+			Q <= D;
+		end
+	end
 endmodule 
