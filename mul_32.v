@@ -45,4 +45,5 @@ module mul_32(
 			P = P + sCA;
 		end
 	end
+	
 endmodule 
