@@ -34,8 +34,8 @@ datapath datapath_instance(
 
 initial 
 	begin
-		Clock = 0;
-		forever #10 Clock = ~ Clock;
+	     Clock = 0;
+             forever #10 Clock = ~ Clock;
 end
 
 always @(posedge Clock)//finite state machine; if clock rising-edge
