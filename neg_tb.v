@@ -3,8 +3,8 @@
 // ELEC374 - Digital Systems Engineering
 // Department of Electrical and Computer Engineering
 // Queen's University
-
 `timescale 1ns/10ps
+
 module neg_tb; 	
 	reg   R0in, R1in, R2in, R3in, R4in, R5in, R6in, R7in, R8in, R9in, R10in, R11in, R12in, R13in, R14in, R15in;
 	reg 	PCin, IRin, HIin, LOin, ZHighin, ZLowin, MARin, MDRin, OutPort, Cin, Yin;
