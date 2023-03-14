@@ -27,7 +27,7 @@ module ALU_tb;
 			input_a <= 32'b0100;
 			input_b <= 32'b0010;
 			
-			opcode <= 5'b00000;     // check AND operation 
+			opcode <= 5'b00000;      // check AND operation 
 			
 			# 10 
 			
