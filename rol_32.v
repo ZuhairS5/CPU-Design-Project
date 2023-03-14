@@ -15,4 +15,5 @@ module rol_32(
 			oTemp = ((rIn << rotB) | (rIn >> (32 - rotB)));
 		end
 	assign rOut = oTemp;
+	
 endmodule
